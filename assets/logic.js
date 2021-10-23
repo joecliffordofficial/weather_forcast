@@ -38,6 +38,8 @@ $(document).ready(function() {
     });
   }
 
+//Weather Function
+
   function getWeather(search) {
     var queryURL = weatherAPI + 'q=' + search + units + APIkey;
 
@@ -65,6 +67,8 @@ $(document).ready(function() {
       var weatherIcon = results.weather[0].icon;
       var weatherIconURL = getWeatherIcon + weatherIcon + '.png';
 
+//History Section
+
       storeHistory(name);
 
       $('#city-name').text(name + ' (' + date + ') ');
@@ -72,6 +76,8 @@ $(document).ready(function() {
       $('#temperature').html('<b>Temperature: </b>' + temperature + ' °F');
       $('#humidity').html('<b>Humidity: </b>' + humidity + '%');
       $('#wind-speed').html('<b>Wind Speed: </b>' + windSpeed + ' MPH');
+
+// Get info from API 
 
       var lat = response.coord.lat;
       var lon = response.coord.lon;
@@ -115,6 +121,8 @@ $(document).ready(function() {
         var forecastResults = forecastResponse;
         var forecastArr = [];
 
+//5 Day Section
+
         for (var i = 5; i < 40; i += 8) {
           var forecastObj = {};
           var forecastResultsDate = forecastResults.list[i].dt_txt;
@@ -155,7 +163,7 @@ $(document).ready(function() {
     });
   }
 
-  
+//Store and Display Section  
 
   function storeHistory(citySearchName) {
     var searchHistoryObj = {};
